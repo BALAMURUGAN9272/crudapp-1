@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAR SHOW</title>
+</head>
+<body>
+    <h1>cred app</h1>
+    {{message}}
+<br>
+    {{#if edit_id}}
+     <br><br>
+    <h3>Edit</h3>
+    <form  method="post" action="/update_cars/{{edit_id}}">
+        <label for="tittle">brand</label>
+        <input type="text" name="tittle" value="{{edit_brand.tittle}}">
+        <label for="year">year</label>
+        <input type="text" name="year" value="{{edit_brand.year}}">
+        <input type="submit" >
+    </form>
+    <br><br>
+
+    {{else}}
+
+    <h3>Create</h3>
+    <form action="/store_cars" method="post">
+        <label for="tittle">brand</label>
+        <input type="text" name="tittle">
+        <label for="year">year</label>
+        <input type="text" name="year">
+        <input type="submit" >
+    </form>
+    <br><br>
+
+   {{/if }}
+
+    <ul>
+        {{#each brand}}
+        <li> {{this.tittle }} - {{this.year}} <a href="/?edit_id={{this._id}}">edit</a>  <a href="/?delete_id={{this._id}}" onclick="return confirm('are you sure want to delete')">delete</a> </li>
+        {{/each}}
+    </ul>
+</body>
+</html>
