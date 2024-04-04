@@ -50,7 +50,7 @@ app.get('/', async(req,res)=>{
          case '3':
                 message =' deleted sucessfully'
                break;
-      
+      h
         default:
             break;
     }
